@@ -86,21 +86,70 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Connect = new javax.swing.JButton();
+        IntroducirNombre = new javax.swing.JTextField();
+        IntroducirClave = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Connect.setText("Connect");
+        Connect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConnectActionPerformed(evt);
+            }
+        });
+
+        IntroducirNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        IntroducirNombre.setText("Usuario");
+
+        IntroducirClave.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        IntroducirClave.setText("Clave");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(143, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(IntroducirNombre)
+                    .addComponent(Connect, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                    .addComponent(IntroducirClave))
+                .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(IntroducirNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(IntroducirClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(Connect, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
+        if(IntroducirNombre.getText().equals("admin") && IntroducirClave.getText().equals("admin"))
+        {
+            
+        } else{
+            boolean encontrado = false;
+            int contador = 0;
+            while(!encontrado && contador < listaUsuarios.size())
+            {
+                if(listaUsuarios.get(contador).nombre.equals(IntroducirNombre.getText()))
+                {
+                    encontrado = true;
+                    new PerfilUsuario(listaUsuarios.get(contador)).setVisible(true);
+                }
+                contador++;
+            }
+        }
+    }//GEN-LAST:event_ConnectActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,5 +187,8 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Connect;
+    private javax.swing.JTextField IntroducirClave;
+    private javax.swing.JTextField IntroducirNombre;
     // End of variables declaration//GEN-END:variables
 }
