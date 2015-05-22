@@ -1,3 +1,10 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,12 +20,61 @@
  *         Luis Guillermo Abarca
  */
 public class Inicio extends javax.swing.JFrame {
-
+    
+    //conectar a la base de datos
+    private Statement estado;
+    private ResultSet resultadoConsulta;
+    private Connection conexion;
+    
+    ArrayList<Usuario> listaUsuarios = new ArrayList <Usuario>(); 
+    ArrayList<Pelicula> listaPeliculas = new ArrayList <Pelicula>(); 
     /**
      * Creates new form Inicio
      */
+    
     public Inicio() {
         initComponents();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/videoclub", "root", "");
+            estado = conexion.createStatement();
+            resultadoConsulta = estado.executeQuery("Select * from usuarios");
+            while(resultadoConsulta.next()){
+                Usuario usu = new Usuario();
+                usu.apellido = resultadoConsulta.getString(3);
+                usu.dni = resultadoConsulta.getString(1);
+                usu.email = resultadoConsulta.getString(5);
+                usu.nombre = resultadoConsulta.getString(2);
+                usu.penalizacion = resultadoConsulta.getInt(4);
+                
+                listaUsuarios.add(usu);
+            }
+        }
+        catch (Exception e){
+        }
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/videoclub", "root", "");
+            estado = conexion.createStatement();
+            resultadoConsulta = estado.executeQuery("Select * from peliculas");
+            
+            while(resultadoConsulta.next()){
+                Pelicula peli = new Pelicula();
+                peli.año = resultadoConsulta.getInt(3);
+                peli.clasificacion = resultadoConsulta.getDouble(7);
+                peli.genero = resultadoConsulta.getString(5);
+                peli.id = resultadoConsulta.getInt(1);
+                peli.imdb = resultadoConsulta.getInt(6);
+                peli.pais = resultadoConsulta.getString(4);
+                peli.resumen = resultadoConsulta.getString(8);
+                peli.titulo = resultadoConsulta.getString(2);
+
+                   listaPeliculas.add(peli);
+            }
+        }
+        catch (Exception e){
+        }
     }
 
     /**
