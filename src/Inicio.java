@@ -32,6 +32,7 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form Inicio
      */
     
+    //Empieza el inicio
     public Inicio() {
         initComponents();
         try{
