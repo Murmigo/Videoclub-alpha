@@ -142,67 +142,35 @@ public class Admin extends javax.swing.JFrame {
     
     //evento del boton 1 que es listaPeliculas,que accederá a la ventana dicha
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
-         //nombre de la ventana ventanaPeliculas = new nombre ventana();
-          //ventanaPeliculas.setVisible(true); 
+
+//creamos un objeto que sea la ventana de la lista de peliculas
+       // ListaPeliculas obj=new ListaPeliculas();
+         //lo visualizamos
+         //obj.setVisible(true);
+          //convertimos las dos ventanas en 1 sola
+         //dispose();
     }//GEN-LAST:event_jButton1MousePressed
 
     //boton que nos lleva a la ventana de usuarios con la lista de los mismos
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
-        //nombre ventanaPeliculas = new nombreventana();
-          //ventanaPeliculas.setVisible(true); 
+      //creamos un objeto que sea la ventana de la lista de usuarios 
+       //ListaUsuarios obj=new ListaUsuarios();
+        //lo visualizamos
+        // obj.setVisible(true);
+         //convertimos las dos ventanas en 1 sola
+        // dispose();
     }//GEN-LAST:event_jButton2MousePressed
-//aqui la cosa cambia, accedemos en la misma ventana a la lista de alquileres actuales
+
+        //aqui la cosa cambia, accedemos en la misma ventana a la lista de alquileres actuales
 //desde la base d datos, mostrandola en el jPanel que hay al lado de los botones
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
-        //Llegamos a la conexion con la base de datos de los alquileres actuales
-       /* try{
-            Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/test","root","");
-            estado = conexion.createStatement();
-            resultadoConsulta = estado.executeQuery("Select * from alquiler");
-            //cargo el resultado de la query en mi hashmap
-            while (resultadoConsulta.next()){
-                Pokemon p = new Pokemon();
-                //añadimos a nuestro programa cada resultado de la base de datos segun sus valores y posiciones dentro de la misma
-                p.nombre = resultadoConsulta.getString(2);
-                p.generation_id = resultadoConsulta.getInt(5);
-                p.evolution_chain_id = resultadoConsulta.getInt(6);
-                p.species = resultadoConsulta.getString(12);
-                p.habitat = resultadoConsulta.getString(15);
-                p.weight = resultadoConsulta.getString(11);
-                listaPokemons.put(resultadoConsulta.getString(1), p);
-            }
-        }
-        catch (Exception e){
-        }
-        //////////////////////////////////////////////
-        */
+      //consulta a la base de datos a traves del ArrayList creado por Guille
+        //para obtener el resultado de la consulta "alquileres actuales"
     }//GEN-LAST:event_jButton3MousePressed
 
     private void jButton4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MousePressed
-      //Llegamos a la conexion con la base de datos de los usuarios morosos
-       /* try{
-            Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/test","root","");
-            estado = conexion.createStatement();
-            resultadoConsulta = estado.executeQuery("Select * from pokemon");
-            //cargo el resultado de la query en mi hashmap
-            while (resultadoConsulta.next()){
-                Pokemon p = new Pokemon();
-                //añadimos a nuestro programa cada resultado de la base de datos segun sus valores y posiciones dentro de la misma
-                p.nombre = resultadoConsulta.getString(2);
-                p.generation_id = resultadoConsulta.getInt(5);
-                p.evolution_chain_id = resultadoConsulta.getInt(6);
-                p.species = resultadoConsulta.getString(12);
-                p.habitat = resultadoConsulta.getString(15);
-                p.weight = resultadoConsulta.getString(11);
-                listaPokemons.put(resultadoConsulta.getString(1), p);
-            }
-        }
-        catch (Exception e){
-        }
-        //////////////////////////////////////////////
-        */
+     //consulta a la base de datos a traves del ArrayList creado por Guille
+        //para obtener el resultado de la consulta "alquileres sin pagar"
     }//GEN-LAST:event_jButton4MousePressed
 
     /**
