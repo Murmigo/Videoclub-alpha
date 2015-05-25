@@ -1,6 +1,6 @@
 
 import javax.swing.DefaultListModel;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author luisfeliz
@@ -24,9 +24,9 @@ public class ListaUsuarios extends Inicio {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btncontc = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        btnelim = new javax.swing.JButton();
+        btncontacta = new javax.swing.JButton();
+        btnpenaliza = new javax.swing.JButton();
+        btnelimina = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -35,24 +35,29 @@ public class ListaUsuarios extends Inicio {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btncontc.setText("Contactar");
-
-        jButton4.setText("Penalización");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btncontacta.setText("Contactar");
+        btncontacta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btncontactaActionPerformed(evt);
             }
         });
 
-        btnelim.setText("Eliminar");
-        btnelim.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnpenaliza.setText("Penalización");
+        btnpenaliza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpenalizaActionPerformed(evt);
+            }
+        });
+
+        btnelimina.setText("Eliminar");
+        btnelimina.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnelimMousePressed(evt);
+                btneliminaMousePressed(evt);
             }
         });
-        btnelim.addActionListener(new java.awt.event.ActionListener() {
+        btnelimina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnelimActionPerformed(evt);
+                btneliminaActionPerformed(evt);
             }
         });
 
@@ -99,9 +104,9 @@ public class ListaUsuarios extends Inicio {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btncontc, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnelim, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnpenaliza, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btncontacta, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnelimina, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(40, 40, 40)))
                 .addGap(22, 22, 22))
         );
@@ -113,23 +118,23 @@ public class ListaUsuarios extends Inicio {
                         .addGap(15, 15, 15)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(btnelim, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnelimina, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnpenaliza, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btncontc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btncontacta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnelimMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnelimMousePressed
+    private void btneliminaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btneliminaMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnelimMousePressed
+    }//GEN-LAST:event_btneliminaMousePressed
 
-    private void btnelimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimActionPerformed
+    private void btneliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminaActionPerformed
         if(modelo.getSize()>0)
         {
             int n = jList1.getSelectedIndex();
@@ -137,14 +142,19 @@ public class ListaUsuarios extends Inicio {
         jList1.setSelectedIndex(n);
         }
 
-    }//GEN-LAST:event_btnelimActionPerformed
+    }//GEN-LAST:event_btneliminaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnpenalizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpenalizaActionPerformed
         
                
 
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnpenalizaActionPerformed
+
+    private void btncontactaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncontactaActionPerformed
+int contar = modelo.getSize();
+        JOptionPane.showMessageDialog(rootPane, contar, null, contar);
+    }//GEN-LAST:event_btncontactaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,9 +192,9 @@ public class ListaUsuarios extends Inicio {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btncontc;
-    private javax.swing.JButton btnelim;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btncontacta;
+    private javax.swing.JButton btnelimina;
+    private javax.swing.JButton btnpenaliza;
     private javax.swing.JList jList1;
     private DefaultListModel modelo;
     private javax.swing.JPanel jPanel1;
