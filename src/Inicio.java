@@ -32,6 +32,7 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form Inicio
      */
     
+    //Empieza el inicio
     public Inicio() {
         initComponents();
         try{
@@ -92,38 +93,67 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Connect.setText("Connect");
+        Connect.setText("jButton1");
         Connect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnectActionPerformed(evt);
             }
         });
 
-        IntroducirNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        IntroducirNombre.setText("Usuario");
+        IntroducirNombre.setText("jTextField1");
+        IntroducirNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IntroducirNombreActionPerformed(evt);
+            }
+        });
 
-        IntroducirClave.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        IntroducirClave.setText("Clave");
+        IntroducirClave.setText("IntroducirClave");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(Connect, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(IntroducirNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(209, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(252, 252, 252)
+                    .addComponent(IntroducirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(253, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(183, Short.MAX_VALUE)
+                .addComponent(IntroducirNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(Connect, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(251, Short.MAX_VALUE)
+                    .addComponent(IntroducirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(210, 210, 210)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
+    private void IntroducirNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IntroducirNombreActionPerformed
+        
+    }//GEN-LAST:event_IntroducirNombreActionPerformed
 
-        if(IntroducirNombre.getText().equals("admin") && IntroducirClave.getText().equals("admin"))
+    private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
+         if(IntroducirNombre.getText().equals("admin") && IntroducirClave.getText().equals("admin"))
         {
-            
+            new Admin().setVisible(true);
         } else{
             boolean encontrado = false;
             int contador = 0;
