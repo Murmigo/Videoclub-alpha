@@ -26,8 +26,8 @@ public class Inicio extends javax.swing.JFrame {
     private ResultSet resultadoConsulta;
     private Connection conexion;
     
-    ArrayList<Usuario> listaUsuarios = new ArrayList <Usuario>(); 
-    ArrayList<Pelicula> listaPeliculas = new ArrayList <Pelicula>(); 
+    public ArrayList<Usuario> listaUsuarios = new ArrayList <Usuario>(); 
+    public ArrayList<Pelicula> listaPeliculas = new ArrayList <Pelicula>(); 
     /**
      * Creates new form Inicio
      */
@@ -86,7 +86,24 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Connect = new javax.swing.JButton();
+        IntroducirNombre = new javax.swing.JTextField();
+        IntroducirClave = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Connect.setText("Connect");
+        Connect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConnectActionPerformed(evt);
+            }
+        });
+
+        IntroducirNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        IntroducirNombre.setText("Usuario");
+
+        IntroducirClave.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        IntroducirClave.setText("Clave");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +118,26 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
+
+        if(IntroducirNombre.getText().equals("admin") && IntroducirClave.getText().equals("admin"))
+        {
+            
+        } else{
+            boolean encontrado = false;
+            int contador = 0;
+            while(!encontrado && contador < listaUsuarios.size())
+            {
+                if(listaUsuarios.get(contador).nombre.equalsIgnoreCase(IntroducirNombre.getText()))
+                {
+                    encontrado = true;
+                    new PerfilUsuario(listaUsuarios.get(contador)).setVisible(true);
+                }
+                contador++;
+            }
+        }
+    }//GEN-LAST:event_ConnectActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,5 +175,8 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Connect;
+    private javax.swing.JTextField IntroducirClave;
+    private javax.swing.JTextField IntroducirNombre;
     // End of variables declaration//GEN-END:variables
 }
