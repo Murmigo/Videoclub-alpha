@@ -1,6 +1,6 @@
 
 import javax.swing.DefaultListModel;
-
+import javax.swing.DefaultComboBoxModel;
 /**
  *
  * @author luisfeliz
@@ -12,6 +12,7 @@ public class ListaUsuarios extends Inicio {
      */
     public ListaUsuarios() {
         initComponents();
+      
     }
 
     /**
@@ -37,6 +38,11 @@ public class ListaUsuarios extends Inicio {
         btncontc.setText("Contactar");
 
         jButton4.setText("Penalización");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         btnelim.setText("Eliminar");
         btnelim.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,14 +137,14 @@ public class ListaUsuarios extends Inicio {
         jList1.setSelectedIndex(n);
         }
 
-
-
-
-
-
-
-// TODO add your handling code here:
     }//GEN-LAST:event_btnelimActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+               
+
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
