@@ -133,6 +133,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
+
         if(IntroducirNombre.getText().equals("admin") && IntroducirClave.getText().equals("admin"))
         {
             
@@ -141,7 +142,7 @@ public class Inicio extends javax.swing.JFrame {
             int contador = 0;
             while(!encontrado && contador < listaUsuarios.size())
             {
-                if(listaUsuarios.get(contador).nombre.equals(IntroducirNombre.getText()))
+                if(listaUsuarios.get(contador).nombre.equalsIgnoreCase(IntroducirNombre.getText()))
                 {
                     encontrado = true;
                     new PerfilUsuario(listaUsuarios.get(contador)).setVisible(true);

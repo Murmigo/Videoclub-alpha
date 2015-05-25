@@ -13,5 +13,6 @@ public class Usuario {
     public String email = "";
     public String nombre = "";
     public int penalizacion = 0;
+    public String generoFavorito ="";
     
 }
