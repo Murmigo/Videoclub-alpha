@@ -1,6 +1,5 @@
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -16,8 +15,6 @@ public class Admin extends javax.swing.JFrame {
     private ResultSet resultadoConsulta;
     private Connection conexion;
     
-    //hashmap para almacenar el resultado de la consulta
-    HashMap <String,Pelicula> listaPeliculas = new HashMap();
    
     /**
      * Creates new form Admin
@@ -166,6 +163,8 @@ public class Admin extends javax.swing.JFrame {
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
       //consulta a la base de datos a traves del ArrayList creado por Guille
         //para obtener el resultado de la consulta "alquileres actuales"
+        
+        
     }//GEN-LAST:event_jButton3MousePressed
 
     private void jButton4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MousePressed
