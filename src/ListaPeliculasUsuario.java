@@ -27,10 +27,11 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
         listaUsuarios2 = listaUsuarios;
         
         //muestro la lista de películas
-        mostrarLista(listaPeliculas, listaUsuarios);
+        mostrarLista(listaPeliculas);
+        
     }
     
-    public void mostrarLista(ArrayList<Pelicula> listaPeliculas, ArrayList<Usuario> listaUsuarios){
+    public void mostrarLista(ArrayList<Pelicula> listaPeliculas){
         //creo el objeto que almacena el título de las películas
         DefaultListModel titulo = new DefaultListModel();
         //bucle for que recorre la lista de las películas
@@ -40,8 +41,7 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
         //muestro en el jList el título de las películas
         jList1.setModel(titulo);
     }
-    
-    
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,13 +65,23 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jList1MousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
-        jButton1.setText("jButton1");
+        jButton1.setLabel("");
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Seleccionar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton2MousePressed(evt);
+            }
+        });
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Devolver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -130,6 +140,17 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jList1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MousePressed
+        // TODO add your handling code here:
+        String selected = jList1.getSelectedValue().toString();
+        jButton1.setText(selected);
+    }//GEN-LAST:event_jList1MousePressed
+
+    private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+        // TODO add your handling code here:
+        new PlantillaPelicula().setVisible(true);
+    }//GEN-LAST:event_jButton2MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
