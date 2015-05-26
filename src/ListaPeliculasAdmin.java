@@ -1,5 +1,4 @@
 
-import java.awt.List;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -14,8 +13,8 @@ import javax.swing.DefaultListModel;
  */
 public class ListaPeliculasAdmin extends javax.swing.JFrame{
 
-    public ArrayList<Pelicula> listaPeliculas2 = new ArrayList <Pelicula>(); 
-    public ArrayList<Usuario> listaUsuarios2 = new ArrayList <Usuario>();
+    public ArrayList<Pelicula> listaPeliculas2 = new ArrayList <>(); 
+    public ArrayList<Usuario> listaUsuarios2 = new ArrayList <>();
     /**
      * Creates new form ListaPeliculasAdmin
      */
@@ -34,15 +33,7 @@ public class ListaPeliculasAdmin extends javax.swing.JFrame{
             } 
             jList1.setModel(model); 
     } 
-    /*
-    public void mostrarCaratula(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas){
-        DefaultListModel imag = new DefaultListModel();
-            for(int i=0; i<listaPeliculas.size(); i++){
-                imag.addElement(listaPeliculas.get(i).titulo);
-            } 
-            jPanel2.(imag); 
-    }
-    /*
+     
     
     
     /**
@@ -143,6 +134,8 @@ public class ListaPeliculasAdmin extends javax.swing.JFrame{
 
     private void jList1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MousePressed
         // TODO add your handling code here:
+        String selected = jList1.getSelectedValue().toString();
+        jButton1.setText(selected);
     }//GEN-LAST:event_jList1MousePressed
 
 
