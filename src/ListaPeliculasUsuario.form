@@ -89,9 +89,6 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="label" type="java.lang.String" value=""/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>

@@ -75,16 +75,23 @@ public class Inicio extends javax.swing.JFrame {
     
     private void definirGeneros()
     {
-    
-    for(int i = 0; i<listaPeliculas.size(); i++){
-        for(int j = 0; j<=generos.size(); j++){
-            if(!listaPeliculas.get(i).genero.equals(generos.get(j)))
-            {
-                generos.add(listaPeliculas.get(i).genero);
-            }
+     boolean existe = false;
+        for(int i = 0; i < listaPeliculas.size(); i++){
+            existe= false;
+            if(!generos.isEmpty()){
+                for(int j = 0; j < generos.size(); j++){
+                    if(generos.get(j).equalsIgnoreCase(listaPeliculas.get(i).genero))
+                    {
+                        existe= true;
+                    }
+                }
+                if(existe == false)
+                {
+                    generos.add(listaPeliculas.get(i).genero);
+                }
+            }else
+                 generos.add(listaPeliculas.get(i).genero);
         }
-    }
-    
     }
 
     /**
@@ -163,7 +170,7 @@ public class Inicio extends javax.swing.JFrame {
     private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
          if(IntroducirNombre.getText().equals("admin") && IntroducirClave.getText().equals("admin"))
         {
-            new Admin(listaUsuarios,listaPeliculas).setVisible(true);
+            new Admin(listaUsuarios,listaPeliculas, listaPrestamos).setVisible(true);
         } else{
             boolean encontrado = false;
             int contador = 0;
