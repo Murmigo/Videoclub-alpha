@@ -27,7 +27,8 @@ public class Inicio extends javax.swing.JFrame {
     private Connection conexion;
     
     public ArrayList<Pelicula> listaPeliculas = new ArrayList <Pelicula>(); 
-    public ArrayList<Usuario> listaUsuarios = new ArrayList <Usuario>(); 
+    public ArrayList<Usuario> listaUsuarios = new ArrayList <Usuario>();
+    public ArrayList<Prestamos> listaPrestamos = new ArrayList<Prestamos>();
     /**
      * Creates new form Inicio
      */
