@@ -1,4 +1,5 @@
 
+import java.awt.List;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -10,12 +11,22 @@ public class ListaUsuarios extends javax.swing.JFrame {
 
     /**
      * Creates new form ListaUsuarios
+     * @param listaUsuarios
+     
      */
     public ListaUsuarios(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas) {
         initComponents();
-      
+        llenarList(listaUsuarios);
     }
 
+  
+ public void llenarList(ArrayList<Usuario> listaUsuarios){
+        DefaultListModel model = new DefaultListModel();
+            for(int i=0; i<listaUsuarios.size(); i++){
+                model.addElement(listaUsuarios.get(i).nombre);
+            } 
+            jList1.setModel(model); 
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,8 +164,8 @@ public class ListaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnpenalizaActionPerformed
 
     private void btncontactaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncontactaActionPerformed
-int contar = modelo.getSize();
-        JOptionPane.showMessageDialog(rootPane, contar, null, contar);
+ int email = modelo.getSize();
+        JOptionPane.showMessageDialog(null, "el email es " + email);
     }//GEN-LAST:event_btncontactaActionPerformed
 
 
