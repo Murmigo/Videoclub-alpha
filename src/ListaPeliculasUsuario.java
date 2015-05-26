@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,7 +34,8 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
     }
     
     public void mostrarLista(ArrayList<Pelicula> listaPeliculas){
-        //creo el objeto que almacena el título de las películas
+        //necesitamos un Listener para saber que item esta seleccionado
+//creo el objeto que almacena el título de las películas
         DefaultListModel titulo = new DefaultListModel();
         //bucle for que recorre la lista de las películas
         for(int i=0; i<listaPeliculas.size(); i++){ 
@@ -41,7 +44,20 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
         //muestro en el jList el título de las películas
         jList1.setModel(titulo);
     }
+     private void itemSel()
+     {
+        jList1.addListSelectionListener(new ListSelectionListener(){
+        
+         @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                  jButton1.setText(jList1.getSelectedValue().toString());
+                }
+            }
+        
+        });
      
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
