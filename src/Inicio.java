@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class Inicio extends javax.swing.JFrame {
     
     //conectar a la base de datos
-    private Statement estado;
+    private Statement estado, estadoPeliculas;
     private ResultSet resultadoConsulta, resultadoConsultaPelicula;
     private Connection conexion;
     
@@ -39,6 +39,7 @@ public class Inicio extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/videoclub", "root", "");
             estado = conexion.createStatement();
+            estadoPeliculas = conexion.createStatement();
             resultadoConsulta = estado.executeQuery("Select * from usuarios");
             while(resultadoConsulta.next()){
                 Usuario usu = new Usuario();
@@ -50,20 +51,11 @@ public class Inicio extends javax.swing.JFrame {
                 
                 listaUsuarios.add(usu);
             }
-        }
-        catch (Exception e){
-        }
-        
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/videoclub", "root", "");
-            estado = conexion.createStatement();
-            resultadoConsultaPelicula = estado.executeQuery("Select * from peliculas");
-            
+            resultadoConsultaPelicula = estadoPeliculas.executeQuery("Select * from peliculas");
             while(resultadoConsultaPelicula.next()){
                 Pelicula peli = new Pelicula();
                 peli.año = resultadoConsultaPelicula.getInt(3);
-                peli.clasificacion = resultadoConsultaPelicula.getDouble(7);
+                peli.clasificacion = resultadoConsultaPelicula.getString(7);
                 peli.genero = resultadoConsultaPelicula.getString(5);
                 peli.id = resultadoConsultaPelicula.getInt(1);
                 peli.imdb = resultadoConsultaPelicula.getInt(6);
