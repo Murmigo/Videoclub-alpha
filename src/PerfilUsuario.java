@@ -1,5 +1,13 @@
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,6 +22,8 @@ public class PerfilUsuario extends javax.swing.JFrame {
 
     public ArrayList<Pelicula> listaPeliculas2 = new ArrayList <Pelicula>(); 
     public ArrayList<Usuario> listaUsuarios2 = new ArrayList <Usuario>();
+    Image img;
+    Usuario usu2;
     /**
      * Creates new form PerfilUsuario
      */
@@ -23,11 +33,26 @@ public class PerfilUsuario extends javax.swing.JFrame {
         jLabel2.setText(usu.generoFavorito);
         jLabel4.setText(""+jLabel7.getText());
         jLabel5.setText(""+usu.nombre);
-        
+        usu2 = usu;
         listaPeliculas2 = listaPeliculas;
         listaUsuarios2 = listaUsuarios;
+    
+        try {
+            img = ImageIO.read((getClass().getResource("/fotos usuarios/"+usu.dni+".jpg")));
+        } catch (IOException ex) {
+            Logger.getLogger(PerfilUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jPanel4.setVisible(true);
+        Graphics2D g2 =(Graphics2D) jPanel4.getGraphics();
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0,0,jPanel4.getWidth(),jPanel4.getHeight());
+        g2.drawImage(img, 0,0,jPanel4.getWidth(),jPanel4.getHeight(), null);
     }
-
+    
+ @Override
+    public void paint(Graphics g){
+        super.paintComponents(g);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,8 +94,18 @@ public class PerfilUsuario extends javax.swing.JFrame {
         });
 
         jButton3.setText("Desconectar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Peliculas Alquiladas");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Genero Favorito");
 
@@ -199,6 +234,17 @@ public class PerfilUsuario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new ListaPeliculasUsuario(listaUsuarios2,listaPeliculas2).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        for(int i=0; i<usu2.listaPrestamos.size();i++)
+        {
+            
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       new Inicio().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

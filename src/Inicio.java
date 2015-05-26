@@ -70,6 +70,21 @@ public class Inicio extends javax.swing.JFrame {
         catch (Exception e){
         }
     }
+    
+    private void definirGeneros()
+    {
+    ArrayList <String> generos = new ArrayList<>();
+    
+    for(int i = 0; i<listaPeliculas.size(); i++){
+        for(int j = 0; j<=generos.size(); j++){
+            if(!listaPeliculas.get(i).genero.equals(generos.get(j)))
+            {
+                generos.add(listaPeliculas.get(i).genero);
+            }
+        }
+    }
+    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
