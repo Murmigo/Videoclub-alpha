@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 /**
  *
  * @author luisfeliz
  */
 public class ListaUsuarios extends javax.swing.JFrame {
-
+       String usuarioAuxiliar ="";
+       ArrayList<Usuario> listaUsuarios2 = new ArrayList <Usuario>();
     /**
      * Creates new form ListaUsuarios
      * @param listaUsuarios
@@ -18,11 +21,22 @@ public class ListaUsuarios extends javax.swing.JFrame {
     public ListaUsuarios(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas) {
         initComponents();
         llenarList(listaUsuarios);
+        listaUsuarios2 = listaUsuarios;
        
     }
 
   
  public void llenarList(ArrayList<Usuario> listaUsuarios){
+     jList1.addListSelectionListener(new ListSelectionListener(){
+        
+         @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                  usuarioAuxiliar =jList1.getSelectedValue().toString();
+                }
+            }
+        
+        });
         DefaultListModel model = new DefaultListModel();
             for(int i=0; i<listaUsuarios.size(); i++){
                 model.addElement(listaUsuarios.get(i).nombre);
@@ -43,7 +57,23 @@ public class ListaUsuarios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "");
         }
     
- 
+ private int buscarUsuario(String usuarioABuscar)
+     {
+         Usuario usuarioLocal = new Usuario();
+        int contador =0;
+        boolean encontrado = false;
+        while(encontrado == false && contador< listaUsuarios2.size())
+        {
+            if(usuarioABuscar.equalsIgnoreCase(listaUsuarios2.get(contador).nombre))
+                encontrado = true;
+            else
+                contador++;
+        }
+        if(!encontrado){
+           contador = -1;
+        }
+        return contador;
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -162,8 +192,12 @@ public class ListaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btneliminaMousePressed
 
     private void btneliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminaActionPerformed
-      
-            clearList();
+      int aux = buscarUsuario(usuarioAuxiliar);
+        if(aux >=0){
+            listaUsuarios2.remove(aux);
+            llenarList(listaUsuarios2);
+        }
+        
     }//GEN-LAST:event_btneliminaActionPerformed
 
     private void btnpenalizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpenalizaActionPerformed

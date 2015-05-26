@@ -23,13 +23,13 @@ public class Admin extends javax.swing.JFrame {
       
     }
     //metodo public que llena la lista de los alquileres actuales
-      public void llenarList(List lista,ArrayList<Prestamos> listaPrestamos){
+      public void llenarList(ArrayList<Prestamos> listaPrestamos){
         DefaultListModel model = new DefaultListModel();
             for(int i=0; i<listaPrestamos.size(); i++){
-                model.addElement(listaPrestamos.get(i).dniUsuario);
-                model.addElement(listaPrestamos.get(i).idPelicula);
-                model.addElement(listaPrestamos.get(i).fechaPrestamo);
-                model.addElement(listaPrestamos.get(i).fechaDevolucion);
+               // model.addElement(listaPrestamos.get(i).dniUsuario);
+                  model.addElement(listaPrestamos.get(i).idPelicula);
+               // model.addElement(listaPrestamos.get(i).fechaPrestamo);
+               // model.addElement(listaPrestamos.get(i).fechaDevolucion);
             } 
             jList1.setModel(model); 
     } 
@@ -81,6 +81,11 @@ public class Admin extends javax.swing.JFrame {
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton3MousePressed(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -158,7 +163,7 @@ public class Admin extends javax.swing.JFrame {
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
       //consulta a la base de datos a traves del ArrayList creado por Guille
         //para obtener el resultado de la consulta "alquileres actuales"
-                // llenarList(listaPrestamos, listaUsuarios);
+
     }//GEN-LAST:event_jButton3MousePressed
 //evento del boton 1 que es listaPeliculas,que accederá a la ventana dicha
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -168,6 +173,10 @@ public class Admin extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new ListaUsuarios(listaUsuarios2,listaPeliculas2).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        llenarList(listaPrestamos2);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
 

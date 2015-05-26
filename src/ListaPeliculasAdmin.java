@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,13 +29,41 @@ public class ListaPeliculasAdmin extends javax.swing.JFrame{
     
     
     public void llenarList(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas){
+                jList1.addListSelectionListener(new ListSelectionListener(){
+        
+         @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                  jButton1.setText(jList1.getSelectedValue().toString());
+                }
+            }
+        });
+                
         DefaultListModel model = new DefaultListModel();
             for(int i=0; i<listaPeliculas.size(); i++){
                 model.addElement(listaPeliculas.get(i).titulo);
             } 
             jList1.setModel(model); 
     } 
-     
+    
+    private void buscarPelicula()
+     {
+        int contador =0;
+        boolean encontrado = false;
+        String peliculaABuscar = jButton1.getText();
+        //Busca al pokemon por nombre ignorando mayus o minus
+        while(encontrado == false && contador< listaPeliculas2.size())
+        {
+            
+            if(peliculaABuscar.equalsIgnoreCase(listaPeliculas2.get(contador).titulo))
+                encontrado = true;
+            else
+                contador++;
+        }
+        if(encontrado){
+            new PlantillaPelicula(listaPeliculas2.get(contador)).setVisible(true);
+        }
+     }
     
     
     /**
@@ -146,7 +176,7 @@ public class ListaPeliculasAdmin extends javax.swing.JFrame{
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
         // TODO add your handling code here:
-        new PlantillaPelicula().setVisible(true);
+        buscarPelicula();
     }//GEN-LAST:event_jButton2MousePressed
 
 

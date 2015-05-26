@@ -179,7 +179,7 @@ public class Inicio extends javax.swing.JFrame {
                 if(listaUsuarios.get(contador).nombre.equalsIgnoreCase(IntroducirNombre.getText()))
                 {
                     encontrado = true;
-                    new PerfilUsuario(listaUsuarios.get(contador),listaUsuarios, listaPeliculas).setVisible(true);
+                    new PerfilUsuario(listaUsuarios.get(contador),listaUsuarios, listaPeliculas, listaPrestamos).setVisible(true);
                 }
                 contador++;
             }
