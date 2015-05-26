@@ -8,12 +8,24 @@
  * @author xp
  */
 public class PlantillaPelicula extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form PlantillaPelicula
      */
     public PlantillaPelicula() {
         initComponents();
+        
+    }
+    
+    public PlantillaPelicula (Pelicula peli){
+        
+        jLabel1.setText("" + peli.titulo);
+        jLabel2.setText("" + peli.año);
+        jLabel3.setText("" + peli.genero);
+        jLabel4.setText("" + peli.pais);
+        jLabel5.setText("" + peli.resumen);
+        jLabel6.setText("" + peli.clasificacion);
+        jLabel7.setText("" + peli.imdb);
     }
 
     /**

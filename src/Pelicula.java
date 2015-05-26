@@ -9,7 +9,7 @@
  */
 public class Pelicula {
     public int año =0;
-    public double clasificacion =0.0;
+    public String clasificacion ="";
     public String genero = "";
     public int id = 0;
     public int imdb = 0;
