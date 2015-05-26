@@ -13,21 +13,27 @@ public class Admin extends javax.swing.JFrame {
      */
     public ArrayList<Pelicula> listaPeliculas2 = new ArrayList <Pelicula>(); 
     public ArrayList<Usuario> listaUsuarios2 = new ArrayList <Usuario>();
-    public Admin(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas) {
+    public ArrayList<Prestamos> listaPrestamos2 = new ArrayList<Prestamos>();
+    
+    public Admin(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas,ArrayList<Prestamos> listaPrestamos) {
         initComponents();
         listaPeliculas2 = listaPeliculas;
         listaUsuarios2 = listaUsuarios;
+        listaPrestamos2 = listaPrestamos;
       
     }
     //metodo public que llena la lista de los alquileres actuales
-      /* public void llenarList(List lista,ArrayList<Prestamos> listaPrestamos){
+      public void llenarList(List lista,ArrayList<Prestamos> listaPrestamos){
         DefaultListModel model = new DefaultListModel();
             for(int i=0; i<listaPrestamos.size(); i++){
-                model.addElement(listaPrestamos.get(i).titulo);
+                model.addElement(listaPrestamos.get(i).dniUsuario);
+                model.addElement(listaPrestamos.get(i).idPelicula);
+                model.addElement(listaPrestamos.get(i).fechaPrestamo);
+                model.addElement(listaPrestamos.get(i).fechaDevolucion);
             } 
             jList1.setModel(model); 
     } 
-*/
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
