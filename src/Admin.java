@@ -1,9 +1,7 @@
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.awt.List;
 import java.util.ArrayList;
-import java.util.HashMap;
+import javax.swing.DefaultListModel;
+
 
 /**
  *
@@ -19,8 +17,17 @@ public class Admin extends javax.swing.JFrame {
         initComponents();
         listaPeliculas2 = listaPeliculas;
         listaUsuarios2 = listaUsuarios;
+      
     }
-
+    //metodo public que llena la lista de los alquileres actuales
+      /* public void llenarList(List lista,ArrayList<Prestamos> listaPrestamos){
+        DefaultListModel model = new DefaultListModel();
+            for(int i=0; i<listaPrestamos.size(); i++){
+                model.addElement(listaPrestamos.get(i).titulo);
+            } 
+            jList1.setModel(model); 
+    } 
+*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -145,45 +152,30 @@ public class Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    //evento del boton 1 que es listaPeliculas,que accederá a la ventana dicha
+   
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
-
-//creamos un objeto que sea la ventana de la lista de peliculas
-       // ListaPeliculas obj=new ListaPeliculas();
-         //lo visualizamos
-         //obj.setVisible(true);
-          //convertimos las dos ventanas en 1 sola
-         //dispose();
     }//GEN-LAST:event_jButton1MousePressed
-
-    //boton que nos lleva a la ventana de usuarios con la lista de los mismos
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
-      //creamos un objeto que sea la ventana de la lista de usuarios 
-       //ListaUsuarios obj=new ListaUsuarios();
-        //lo visualizamos
-        // obj.setVisible(true);
-         //convertimos las dos ventanas en 1 sola
-        // dispose();
     }//GEN-LAST:event_jButton2MousePressed
+        
 
-        //aqui la cosa cambia, accedemos en la misma ventana a la lista de alquileres actuales
+//aqui la cosa cambia, accedemos en la misma ventana a la lista de alquileres actuales
 //desde la base d datos, mostrandola en el jPanel que hay al lado de los botones
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
       //consulta a la base de datos a traves del ArrayList creado por Guille
         //para obtener el resultado de la consulta "alquileres actuales"
-        
-        
+                // llenarList(listaPrestamos, listaUsuarios);
     }//GEN-LAST:event_jButton3MousePressed
 
     private void jButton4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MousePressed
      //consulta a la base de datos a traves del ArrayList creado por Guille
         //para obtener el resultado de la consulta "alquileres sin pagar"
     }//GEN-LAST:event_jButton4MousePressed
-
+//evento del boton 1 que es listaPeliculas,que accederá a la ventana dicha
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new ListaPeliculasAdmin(listaUsuarios2,listaPeliculas2).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+  //boton que nos lleva a la ventana de usuarios con la lista de los mismos
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new ListaUsuarios(listaUsuarios2,listaPeliculas2).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
