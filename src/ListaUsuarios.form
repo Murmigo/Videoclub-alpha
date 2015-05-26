@@ -140,11 +140,6 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="modelo = new DefaultListModel();"/>
-                <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private DefaultListModel modelo;"/>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jList1.setModel(modelo);"/>
-              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

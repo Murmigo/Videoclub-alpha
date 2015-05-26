@@ -1,6 +1,7 @@
 
 import java.awt.List;
 import java.util.ArrayList;
+import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 /**
@@ -17,6 +18,7 @@ public class ListaUsuarios extends javax.swing.JFrame {
     public ListaUsuarios(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas) {
         initComponents();
         llenarList(listaUsuarios);
+       
     }
 
   
@@ -24,9 +26,24 @@ public class ListaUsuarios extends javax.swing.JFrame {
         DefaultListModel model = new DefaultListModel();
             for(int i=0; i<listaUsuarios.size(); i++){
                 model.addElement(listaUsuarios.get(i).nombre);
+                //model.addElement(listaUsuarios.get(i).email);        ;
             } 
-            jList1.setModel(model); 
+            jList1.setModel(model);
+            
+       
     } 
+ 
+ public void clearList(){ 
+     DefaultListModel model = new DefaultListModel();
+              jList1.setModel(model); 
+ }
+   
+        public static void Contactar(String[] listaUsuarios) {
+             DefaultListModel model = new DefaultListModel();
+            JOptionPane.showMessageDialog(null, "");
+        }
+    
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +59,6 @@ public class ListaUsuarios extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        modelo = new DefaultListModel();
         jList1 = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,7 +100,6 @@ public class ListaUsuarios extends javax.swing.JFrame {
             .addGap(0, 249, Short.MAX_VALUE)
         );
 
-        jList1.setModel(modelo);
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -136,24 +151,19 @@ public class ListaUsuarios extends javax.swing.JFrame {
                 .addComponent(btnpenaliza, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btncontacta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btneliminaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btneliminaMousePressed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btneliminaMousePressed
 
     private void btneliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminaActionPerformed
-        if(modelo.getSize()>0)
-        {
-            int n = jList1.getSelectedIndex();
-        modelo.removeElementAt(n);
-        jList1.setSelectedIndex(n);
-        }
-
+      
+            clearList();
     }//GEN-LAST:event_btneliminaActionPerformed
 
     private void btnpenalizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpenalizaActionPerformed
@@ -164,8 +174,9 @@ public class ListaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnpenalizaActionPerformed
 
     private void btncontactaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncontactaActionPerformed
- int email = modelo.getSize();
-        JOptionPane.showMessageDialog(null, "el email es " + email);
+ /*int email = model.getSize();
+        JOptionPane.showMessageDialog(null, "" + email);*/
+        
     }//GEN-LAST:event_btncontactaActionPerformed
 
 
@@ -175,9 +186,11 @@ public class ListaUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton btnelimina;
     private javax.swing.JButton btnpenaliza;
     private javax.swing.JList jList1;
-    private DefaultListModel modelo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    
+    
 }
