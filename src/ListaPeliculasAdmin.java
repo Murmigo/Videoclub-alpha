@@ -1,5 +1,6 @@
 
 import java.awt.List;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 /*
@@ -11,18 +12,22 @@ import javax.swing.DefaultListModel;
  *
  * @author Yoel Cano
  */
-public class ListaPeliculasAdmin extends Inicio{
+public class ListaPeliculasAdmin extends javax.swing.JFrame{
 
+    public ArrayList<Pelicula> listaPeliculas2 = new ArrayList <Pelicula>(); 
+    public ArrayList<Usuario> listaUsuarios2 = new ArrayList <Usuario>();
     /**
      * Creates new form ListaPeliculasAdmin
      */
-    public ListaPeliculasAdmin() {
+    public ListaPeliculasAdmin(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas) {
         initComponents();
+        listaPeliculas2 = listaPeliculas;
+        listaUsuarios2 = listaUsuarios;
         
     }
     
     
-    public void LlenarList(List lista){
+    public void LlenarList(List lista,ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas){
         DefaultListModel model = new DefaultListModel();
             for(int i=0; i<listaPeliculas.size(); i++){
                 model.addElement(listaPeliculas.get(i).titulo);
