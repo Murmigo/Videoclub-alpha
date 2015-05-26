@@ -29,6 +29,7 @@ public class Inicio extends javax.swing.JFrame {
     public ArrayList<Pelicula> listaPeliculas = new ArrayList <Pelicula>(); 
     public ArrayList<Usuario> listaUsuarios = new ArrayList <Usuario>();
     public ArrayList<Prestamos> listaPrestamos = new ArrayList<Prestamos>();
+    ArrayList <String> generos = new ArrayList<>();
     /**
      * Creates new form Inicio
      */
@@ -69,6 +70,21 @@ public class Inicio extends javax.swing.JFrame {
         }
         catch (Exception e){
         }
+        definirGeneros();
+    }
+    
+    private void definirGeneros()
+    {
+    
+    for(int i = 0; i<listaPeliculas.size(); i++){
+        for(int j = 0; j<=generos.size(); j++){
+            if(!listaPeliculas.get(i).genero.equals(generos.get(j)))
+            {
+                generos.add(listaPeliculas.get(i).genero);
+            }
+        }
+    }
+    
     }
 
     /**
