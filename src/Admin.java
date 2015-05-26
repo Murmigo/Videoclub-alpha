@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -9,18 +10,15 @@ import java.util.HashMap;
  * @author Sote
  */
 public class Admin extends javax.swing.JFrame {
-
-    // conectamos a la base de datos
-    private Statement estado;
-    private ResultSet resultadoConsulta;
-    private Connection conexion;
-    
-   
     /**
      * Creates new form Admin
      */
-    public Admin() {
+    public ArrayList<Pelicula> listaPeliculas2 = new ArrayList <Pelicula>(); 
+    public ArrayList<Usuario> listaUsuarios2 = new ArrayList <Usuario>();
+    public Admin(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas) {
         initComponents();
+        listaPeliculas2 = listaPeliculas;
+        listaUsuarios2 = listaUsuarios;
     }
 
     /**
@@ -183,11 +181,11 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new ListaPeliculasAdmin().setVisible(true);
+        new ListaPeliculasAdmin(listaUsuarios2,listaPeliculas2).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new ListaUsuarios().setVisible(true);
+        new ListaUsuarios(listaUsuarios2,listaPeliculas2).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -1,16 +1,17 @@
 
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 /**
  *
  * @author luisfeliz
  */
-public class ListaUsuarios extends Inicio {
+public class ListaUsuarios extends javax.swing.JFrame {
 
     /**
      * Creates new form ListaUsuarios
      */
-    public ListaUsuarios() {
+    public ListaUsuarios(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas) {
         initComponents();
       
     }

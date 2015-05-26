@@ -23,11 +23,11 @@ public class Inicio extends javax.swing.JFrame {
     
     //conectar a la base de datos
     private Statement estado;
-    private ResultSet resultadoConsulta;
+    private ResultSet resultadoConsulta, resultadoConsultaPelicula;
     private Connection conexion;
     
-    public ArrayList<Usuario> listaUsuarios = new ArrayList <Usuario>(); 
     public ArrayList<Pelicula> listaPeliculas = new ArrayList <Pelicula>(); 
+    public ArrayList<Usuario> listaUsuarios = new ArrayList <Usuario>(); 
     /**
      * Creates new form Inicio
      */
@@ -58,20 +58,20 @@ public class Inicio extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/videoclub", "root", "");
             estado = conexion.createStatement();
-            resultadoConsulta = estado.executeQuery("Select * from peliculas");
+            resultadoConsultaPelicula = estado.executeQuery("Select * from peliculas");
             
-            while(resultadoConsulta.next()){
+            while(resultadoConsultaPelicula.next()){
                 Pelicula peli = new Pelicula();
-                peli.año = resultadoConsulta.getInt(3);
-                peli.clasificacion = resultadoConsulta.getDouble(7);
-                peli.genero = resultadoConsulta.getString(5);
-                peli.id = resultadoConsulta.getInt(1);
-                peli.imdb = resultadoConsulta.getInt(6);
-                peli.pais = resultadoConsulta.getString(4);
-                peli.resumen = resultadoConsulta.getString(8);
-                peli.titulo = resultadoConsulta.getString(2);
+                peli.año = resultadoConsultaPelicula.getInt(3);
+                peli.clasificacion = resultadoConsultaPelicula.getDouble(7);
+                peli.genero = resultadoConsultaPelicula.getString(5);
+                peli.id = resultadoConsultaPelicula.getInt(1);
+                peli.imdb = resultadoConsultaPelicula.getInt(6);
+                peli.pais = resultadoConsultaPelicula.getString(4);
+                peli.resumen = resultadoConsultaPelicula.getString(8);
+                peli.titulo = resultadoConsultaPelicula.getString(2);
 
-                   listaPeliculas.add(peli);
+                listaPeliculas.add(peli);
             }
         }
         catch (Exception e){
@@ -93,55 +93,56 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Connect.setText("jButton1");
+        Connect.setText("Connect");
         Connect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnectActionPerformed(evt);
             }
         });
 
-        IntroducirNombre.setText("jTextField1");
+        IntroducirNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        IntroducirNombre.setText("Introduce tu Nombre");
+        IntroducirNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         IntroducirNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IntroducirNombreActionPerformed(evt);
             }
         });
 
-        IntroducirClave.setText("IntroducirClave");
+        IntroducirClave.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        IntroducirClave.setText("Introduce tu Clave");
+        IntroducirClave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(Connect, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(IntroducirNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(209, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(252, 252, 252)
-                    .addComponent(IntroducirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(253, Short.MAX_VALUE)))
+                .addGap(306, 306, 306)
+                .addComponent(Connect, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(223, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(IntroducirNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                    .addComponent(IntroducirClave))
+                .addGap(214, 214, 214))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(183, Short.MAX_VALUE)
-                .addComponent(IntroducirNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(Connect, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(251, Short.MAX_VALUE)
-                    .addComponent(IntroducirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(210, 210, 210)))
+                .addContainerGap(208, Short.MAX_VALUE)
+                .addComponent(IntroducirNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(IntroducirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Connect)
+                .addGap(195, 195, 195))
         );
+
+        Connect.getAccessibleContext().setAccessibleParent(null);
+        IntroducirNombre.getAccessibleContext().setAccessibleParent(null);
+        IntroducirClave.getAccessibleContext().setAccessibleParent(null);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,7 +154,7 @@ public class Inicio extends javax.swing.JFrame {
     private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
          if(IntroducirNombre.getText().equals("admin") && IntroducirClave.getText().equals("admin"))
         {
-            new Admin().setVisible(true);
+            new Admin(listaUsuarios,listaPeliculas).setVisible(true);
         } else{
             boolean encontrado = false;
             int contador = 0;
@@ -162,7 +163,7 @@ public class Inicio extends javax.swing.JFrame {
                 if(listaUsuarios.get(contador).nombre.equalsIgnoreCase(IntroducirNombre.getText()))
                 {
                     encontrado = true;
-                    new PerfilUsuario(listaUsuarios.get(contador)).setVisible(true);
+                    new PerfilUsuario(listaUsuarios.get(contador),listaUsuarios, listaPeliculas).setVisible(true);
                 }
                 contador++;
             }
