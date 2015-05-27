@@ -30,11 +30,13 @@ public class PerfilUsuario extends javax.swing.JFrame {
     Image img;
     Usuario usu2;
     int aux;
+    int cuentaGeneros = 0;
     /**
      * Creates new form PerfilUsuario
      */
     public PerfilUsuario(Usuario usu, ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas, ArrayList<Prestamos> listaPrestamos,ArrayList<String> generos) {
         initComponents();
+        
         usu2 = usu;
         listaPeliculas2 = listaPeliculas;
         listaUsuarios2 = listaUsuarios;
@@ -160,6 +162,11 @@ public void mostrarLista(ArrayList<Prestamos> listaPrestamosloc){
         jLabel6.setText("Recomendadas");
 
         jButton5.setText("miedo");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -317,6 +324,15 @@ public void mostrarLista(ArrayList<Prestamos> listaPrestamosloc){
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        new Inicio().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+  cuentaGeneros++;
+        if(cuentaGeneros < generos2.size())
+        {
+            jButton5.setText(generos2.get(cuentaGeneros));
+        }else
+            cuentaGeneros = 0;
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

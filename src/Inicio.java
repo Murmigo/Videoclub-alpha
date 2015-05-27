@@ -37,6 +37,7 @@ public class Inicio extends javax.swing.JFrame {
     //Empieza el inicio
     public Inicio() {
         initComponents();
+        
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/videoclub", "root", "");
