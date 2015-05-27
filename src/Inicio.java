@@ -37,6 +37,7 @@ public class Inicio extends javax.swing.JFrame {
     //Empieza el inicio
     public Inicio() {
         initComponents();
+        
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/videoclub", "root", "");
@@ -181,7 +182,7 @@ public class Inicio extends javax.swing.JFrame {
             int contador = 0;
             while(!encontrado && contador < listaUsuarios.size())
             {
-                if(listaUsuarios.get(contador).nombre.equalsIgnoreCase(IntroducirNombre.getText()))
+                if(listaUsuarios.get(contador).nombre.equalsIgnoreCase(IntroducirNombre.getText()) && listaUsuarios.get(contador).dni.equalsIgnoreCase(IntroducirClave.getText()))
                 {
                     encontrado = true;
                     new PerfilUsuario(listaUsuarios.get(contador),listaUsuarios, listaPeliculas, listaPrestamos, generos).setVisible(true);
