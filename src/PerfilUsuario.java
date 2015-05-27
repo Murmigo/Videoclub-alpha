@@ -26,18 +26,20 @@ public class PerfilUsuario extends javax.swing.JFrame {
     public ArrayList<Pelicula> listaPeliculas2 = new ArrayList <Pelicula>(); 
     public ArrayList<Usuario> listaUsuarios2 = new ArrayList <Usuario>();
     public ArrayList<Prestamos> listaPrestamos2 = new ArrayList<Prestamos>();
+    public ArrayList<String> generos2 = new ArrayList<String>();
     Image img;
     Usuario usu2;
     int aux;
     /**
      * Creates new form PerfilUsuario
      */
-    public PerfilUsuario(Usuario usu, ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas, ArrayList<Prestamos> listaPrestamos) {
+    public PerfilUsuario(Usuario usu, ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas, ArrayList<Prestamos> listaPrestamos,ArrayList<String> generos) {
         initComponents();
         usu2 = usu;
         listaPeliculas2 = listaPeliculas;
         listaUsuarios2 = listaUsuarios;
         listaPrestamos2 = listaPrestamos;
+        generos2 = generos;
         jPanel1.setVisible(false);
         jPanel2.setVisible(false);
         jLabel1.setText(jButton5.getText());
@@ -300,7 +302,7 @@ public void mostrarLista(ArrayList<Prestamos> listaPrestamosloc){
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new ListaPeliculasUsuario(usu2,listaUsuarios2,listaPeliculas2, listaPrestamos2).setVisible(true);
+        new ListaPeliculasUsuario(usu2,listaUsuarios2,listaPeliculas2, listaPrestamos2, generos2).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
