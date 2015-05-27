@@ -1,6 +1,3 @@
-
-import java.util.Date;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +7,6 @@ import java.util.Date;
  *
  * @author xp
  */
-public class Prestamos {
-    public String dniUsuario ="";
-    public Date fechaDevolucion;
-    public Date fechaPrestamo;
-    public int numeroEjemplar = 3;
-    public int idPelicula = 0;
+public class Listas {
     
 }

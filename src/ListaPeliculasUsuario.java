@@ -1,5 +1,10 @@
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.DefaultListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -18,16 +23,19 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
     
     public ArrayList<Pelicula> listaPeliculas2 = new ArrayList <Pelicula>();
     public ArrayList<Usuario> listaUsuarios2 = new ArrayList <Usuario>();
-
+    public ArrayList<Prestamos> listaPrestamos2 = new ArrayList<Prestamos>();
+    public ArrayList<String> generos2 = new ArrayList<String>();
+    Usuario usu2;
     /**
      * Creates new form ListaPeliculasUsuario
      */
-    public ListaPeliculasUsuario(ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas) {
+    public ListaPeliculasUsuario(Usuario usu, ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas, ArrayList<Prestamos> listaPrestamos,ArrayList<String> generos) {
         initComponents();
         
         listaPeliculas2 = listaPeliculas;
         listaUsuarios2 = listaUsuarios;
-        
+        listaPrestamos2 = listaPrestamos;
+        usu2 = usu;
         //muestro la lista de películas
         mostrarLista(listaPeliculas);
         
@@ -35,17 +43,6 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
     
     public void mostrarLista(ArrayList<Pelicula> listaPeliculas){
         //necesitamos un Listener para saber que item esta seleccionado
-//creo el objeto que almacena el título de las películas
-        DefaultListModel titulo = new DefaultListModel();
-        //bucle for que recorre la lista de las películas
-        for(int i=0; i<listaPeliculas.size(); i++){ 
-            titulo.addElement(listaPeliculas.get(i).titulo); 
-        }
-        //muestro en el jList el título de las películas
-        jList1.setModel(titulo);
-    }
-     private void itemSel()
-     {
         jList1.addListSelectionListener(new ListSelectionListener(){
         
          @Override
@@ -56,8 +53,58 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
             }
         
         });
-     
+        
+//creo el objeto que almacena el título de las películas
+        DefaultListModel titulo = new DefaultListModel();
+        //bucle for que recorre la lista de las películas
+        for(int i=0; i<listaPeliculas.size(); i++){ 
+            titulo.addElement(listaPeliculas.get(i).titulo); 
+        }
+        //muestro en el jList el título de las películas
+        jList1.setModel(titulo);
+    }
+     private Pelicula buscarPelicula()
+     {
+        int contador =0;
+        boolean encontrado = false;
+        String peliculaABuscar = jButton1.getText();
+        //Busca al pokemon por nombre ignorando mayus o minus
+        while(encontrado == false && contador< listaPeliculas2.size())
+        {
+            
+            if(peliculaABuscar.equalsIgnoreCase(listaPeliculas2.get(contador).titulo))
+                encontrado = true;
+            else
+                contador++;
+        }
+        if(encontrado){
+            new PlantillaPelicula(listaPeliculas2.get(contador)).setVisible(true);
+        }
+        return listaPeliculas2.get(contador);
      }
+     
+     private String getFechaActual() {
+        Date ahora = new Date();
+        SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+        return formateador.format(ahora);
+    }
+      private Date sumarFechasDias(java.util.Date fch, int dias) {
+        Calendar cal = new GregorianCalendar();
+        cal.setTimeInMillis(fch.getTime());
+        cal.add(Calendar.DATE, dias);
+        return new java.util.Date(cal.getTimeInMillis());
+    }
+      public static synchronized Date deStringToDate(String fecha) {
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaEnviar = null;
+        try {
+            fechaEnviar = formatoDelTexto.parse(fecha);
+            return fechaEnviar;
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,12 +135,21 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        jButton1.setLabel("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Seleccionar");
+        jButton2.setText("Alquilar");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton2MousePressed(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -164,9 +220,26 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jList1MousePressed
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
-        // TODO add your handling code here:
-        new PlantillaPelicula().setVisible(true);
+        
     }//GEN-LAST:event_jButton2MousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     new PlantillaPelicula(buscarPelicula()).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Prestamos prestamo = new Prestamos();
+    if(prestamo.numeroEjemplar >0){
+        prestamo.dniUsuario = usu2.dni;
+        prestamo.idPelicula = buscarPelicula().id;
+        prestamo.fechaPrestamo = deStringToDate(getFechaActual());
+        prestamo.fechaDevolucion = sumarFechasDias(prestamo.fechaPrestamo, 3);
+        listaPrestamos2.add(prestamo);
+        prestamo.numeroEjemplar--;
+        usu2.listaPrestamos.add(prestamo);
+    }
+        new PerfilUsuario(usu2,listaUsuarios2, listaPeliculas2, listaPrestamos2, generos2).setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -37,6 +37,7 @@ public class Inicio extends javax.swing.JFrame {
     //Empieza el inicio
     public Inicio() {
         initComponents();
+        
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/videoclub", "root", "");
@@ -78,19 +79,24 @@ public class Inicio extends javax.swing.JFrame {
      boolean existe = false;
         for(int i = 0; i < listaPeliculas.size(); i++){
             existe= false;
+            String[] cogeGeneros = listaPeliculas.get(i).genero.split(", ");
+            for(int k=0; k < cogeGeneros.length;k++){
             if(!generos.isEmpty()){
                 for(int j = 0; j < generos.size(); j++){
-                    if(generos.get(j).equalsIgnoreCase(listaPeliculas.get(i).genero))
+                    if(generos.get(j).equalsIgnoreCase(cogeGeneros[k]))
                     {
                         existe= true;
                     }
                 }
-                if(existe == false)
+                if(existe == false && cogeGeneros[k]!=null)
                 {
-                    generos.add(listaPeliculas.get(i).genero);
+                        generos.add(cogeGeneros[k]);
                 }
-            }else
-                 generos.add(listaPeliculas.get(i).genero);
+            }else{
+                if(cogeGeneros[k]!=null)
+                        generos.add(cogeGeneros[k]);
+            }
+        }
         }
     }
 
@@ -176,10 +182,10 @@ public class Inicio extends javax.swing.JFrame {
             int contador = 0;
             while(!encontrado && contador < listaUsuarios.size())
             {
-                if(listaUsuarios.get(contador).nombre.equalsIgnoreCase(IntroducirNombre.getText()))
+                if(listaUsuarios.get(contador).nombre.equalsIgnoreCase(IntroducirNombre.getText()) && listaUsuarios.get(contador).dni.equalsIgnoreCase(IntroducirClave.getText()))
                 {
                     encontrado = true;
-                    new PerfilUsuario(listaUsuarios.get(contador),listaUsuarios, listaPeliculas).setVisible(true);
+                    new PerfilUsuario(listaUsuarios.get(contador),listaUsuarios, listaPeliculas, listaPrestamos, generos).setVisible(true);
                 }
                 contador++;
             }
