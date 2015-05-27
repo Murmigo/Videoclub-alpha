@@ -24,11 +24,12 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
     public ArrayList<Pelicula> listaPeliculas2 = new ArrayList <Pelicula>();
     public ArrayList<Usuario> listaUsuarios2 = new ArrayList <Usuario>();
     public ArrayList<Prestamos> listaPrestamos2 = new ArrayList<Prestamos>();
+    public ArrayList<String> generos2 = new ArrayList<String>();
     Usuario usu2;
     /**
      * Creates new form ListaPeliculasUsuario
      */
-    public ListaPeliculasUsuario(Usuario usu, ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas, ArrayList<Prestamos> listaPrestamos) {
+    public ListaPeliculasUsuario(Usuario usu, ArrayList<Usuario> listaUsuarios, ArrayList<Pelicula> listaPeliculas, ArrayList<Prestamos> listaPrestamos,ArrayList<String> generos) {
         initComponents();
         
         listaPeliculas2 = listaPeliculas;
@@ -228,14 +229,16 @@ public class ListaPeliculasUsuario extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Prestamos prestamo = new Prestamos();
+    if(prestamo.numeroEjemplar >0){
         prestamo.dniUsuario = usu2.dni;
         prestamo.idPelicula = buscarPelicula().id;
         prestamo.fechaPrestamo = deStringToDate(getFechaActual());
         prestamo.fechaDevolucion = sumarFechasDias(prestamo.fechaPrestamo, 3);
         listaPrestamos2.add(prestamo);
+        prestamo.numeroEjemplar--;
         usu2.listaPrestamos.add(prestamo);
-        
-        new PerfilUsuario(usu2,listaUsuarios2, listaPeliculas2, listaPrestamos2).setVisible(true);
+    }
+        new PerfilUsuario(usu2,listaUsuarios2, listaPeliculas2, listaPrestamos2, generos2).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

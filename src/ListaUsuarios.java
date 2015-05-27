@@ -22,7 +22,6 @@ public class ListaUsuarios extends javax.swing.JFrame {
         initComponents();
         llenarList(listaUsuarios);
         listaUsuarios2 = listaUsuarios;
-       
     }
 
   
@@ -31,7 +30,7 @@ public class ListaUsuarios extends javax.swing.JFrame {
         
          @Override
             public void valueChanged(ListSelectionEvent arg0) {
-                if (!arg0.getValueIsAdjusting()) {
+                if (!arg0.getValueIsAdjusting() && jList1.getSelectedValue()!=null) {
                   usuarioAuxiliar =jList1.getSelectedValue().toString();
                 }
             }
@@ -39,7 +38,7 @@ public class ListaUsuarios extends javax.swing.JFrame {
         });
         DefaultListModel model = new DefaultListModel();
             for(int i=0; i<listaUsuarios.size(); i++){
-                model.addElement(listaUsuarios.get(i).nombre);
+                model.addElement(listaUsuarios.get(i).dni+ " " + listaUsuarios.get(i).nombre+ " " + listaUsuarios.get(i).apellido);
                 //model.addElement(listaUsuarios.get(i).email);        ;
             } 
             jList1.setModel(model);
@@ -64,7 +63,7 @@ public class ListaUsuarios extends javax.swing.JFrame {
         boolean encontrado = false;
         while(encontrado == false && contador< listaUsuarios2.size())
         {
-            if(usuarioABuscar.equalsIgnoreCase(listaUsuarios2.get(contador).nombre))
+            if(usuarioABuscar.equalsIgnoreCase(listaUsuarios2.get(contador).dni))
                 encontrado = true;
             else
                 contador++;
@@ -192,7 +191,7 @@ public class ListaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btneliminaMousePressed
 
     private void btneliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminaActionPerformed
-      int aux = buscarUsuario(usuarioAuxiliar);
+      int aux = buscarUsuario(usuarioAuxiliar.substring(0,7));
         if(aux >=0){
             listaUsuarios2.remove(aux);
             llenarList(listaUsuarios2);

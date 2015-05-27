@@ -14,7 +14,7 @@ public class Prestamos {
     public String dniUsuario ="";
     public Date fechaDevolucion;
     public Date fechaPrestamo;
-    public int numeroEjemplar = 0;
+    public int numeroEjemplar = 3;
     public int idPelicula = 0;
     
 }
